@@ -1,0 +1,17 @@
+<%= form_with(model: @character) do |f| %>
+    <div class="field">
+        <%# f.label :name %><br />
+        <%# f.text_field :name %>
+    </div>
+    <div class="field">
+        <%= f.label :traits %><br />
+        <%= f.text_field :traits %>
+    </div>
+    <div class="field">
+        <%= f.label :appearance %><br />
+        <%= f.text_area :appearance %>
+    </div>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>

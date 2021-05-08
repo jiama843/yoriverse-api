@@ -8,17 +8,8 @@ class Api::CharactersController < ApiController
 
   # POST api/characters
   def create
-    byebug
-
     new_character = Character.create(character_params)
     render json: { status: 200 }
-
-    # .new isn't too useful in an api
-    # if new_character.save
-    #   render json: { status: 200 }
-    # else
-    #   render json: { status: 404 }
-    # end
   end
 
   def show
@@ -26,7 +17,7 @@ class Api::CharactersController < ApiController
   end
 
   def update
-    #update(character_params)
+    
   end
 
   def destroy

@@ -9,6 +9,7 @@
     "weight": 102,
     "D.O.B": null,
     "L.O.B": null,
+    "deceased": false,
     "traits": ["bold", "direct", "unfazed"],
     "description": "The 2nd eldest Yori sibling",
     "abilities": [],

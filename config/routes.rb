@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :characters
+  resources :characters, only: [:new, :create, :show, :update, :destroy, :index]
 
   root 'characters#index'
 
