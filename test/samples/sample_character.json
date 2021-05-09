@@ -2,15 +2,18 @@
     "id": 3,
     "name": {
         "first": "Kaen",
-        "last": "Yori"
+        "last": "Yori",
+        "full": "Kaen Yori"
     },
     "age": 10,
     "height": 140,
     "weight": 102,
-    "D.O.B": null,
-    "L.O.B": null,
+    "date_of_birth": null,
+    "location_of_birth": null,
     "traits": ["bold", "direct", "unfazed"],
+    "appearance": "description of appearance",
     "description": "The 2nd eldest Yori sibling",
     "abilities": [],
-    "relationships": []
+    "relationships": [],
+    "events": []
 }
