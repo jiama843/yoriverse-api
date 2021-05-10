@@ -8,8 +8,6 @@ class Api::CharactersController < ApiController
 
   # POST api/characters
   def create
-    byebug
-
     new_character = Character.create(character_params)
     render json: { status: 200 }
 
@@ -55,6 +53,6 @@ class Api::CharactersController < ApiController
   end
 
   def character_params
-    params.require(:character).permit(:id, :traits)
+    params.require(:character).permit(:id, :first_name, :last_name, :traits, :appearance, :age, :description, :height, :weight, :date_of_birth)
   end
 end
