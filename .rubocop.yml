@@ -97,7 +97,7 @@ AllCops:
   # in this file are enabled by default. Cops can still be disabled in user configuration.
   # Note that it is invalid to set both EnabledByDefault and DisabledByDefault
   # to true in the same configuration.
-  EnabledByDefault: false
+  EnabledByDefault: true
   DisabledByDefault: false
   # New cops introduced between major versions are set to a special pending status
   # and are not enabled by default with warning message.
