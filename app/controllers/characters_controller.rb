@@ -1,10 +1,12 @@
-class CharactersController < ApplicationController
-    def index
-        @character = Character.all
-        
-        # render "characters/index"
-    end
+# frozen_string_literal: true
 
-    def show
-    end
+# Documentation:
+class CharactersController < ApplicationController
+  def index
+    @character = Character.all
+
+    # render "characters/index"
+  end
+
+  def show; end
 end
