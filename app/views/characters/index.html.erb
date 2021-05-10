@@ -6,7 +6,7 @@
     <% @characters.each do |c| %>
         <!-- <li><%# link_to c.traits, character_path(c) %></li> -->
         <li>
-            <%= c.id %> -
+            <%= "#{c.first_name} #{c.last_name}" %> -
             <%= link_to "remove", character_path(c), method: :delete, data: { confirm: "Really?" } %>
         </li>
     <% end %>

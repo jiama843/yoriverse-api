@@ -11,7 +11,7 @@ class CharactersController < ApplicationController
 
     def index
         @characters = Character.all
-        
+
         # render "characters/index"
     end
 
@@ -21,7 +21,6 @@ class CharactersController < ApplicationController
     end
 
     def destroy
-        byebug
         character.destroy
 
         redirect_to characters_path
