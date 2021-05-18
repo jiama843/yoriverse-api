@@ -3,6 +3,8 @@
 Rails.application.routes.draw do
   namespace :api do
     resources :characters do
+      resources :relationships, only: [:create]
+
       get 'appearance'
       get 'traits'
       get 'relationships'
