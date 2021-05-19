@@ -14,6 +14,6 @@ describe Character, type: :model do
         it { should have_many(:relation_froms) }
 
         it { should have_many(:character_tos) }
-        it { should have_many(:character_froms) }        
+        it { should have_many(:character_froms) }
     end
 end
