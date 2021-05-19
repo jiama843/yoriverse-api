@@ -10,6 +10,7 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 require 'database_cleaner'
+require 'shoulda/matchers'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -37,7 +38,7 @@ end
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -52,7 +53,14 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :transaction
   end
 
-  # Shouldn't need to clean database after "each"
+  # might not need to clean database after "each"
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 
   config.before(:all) do
     DatabaseCleaner.start
@@ -61,6 +69,9 @@ RSpec.configure do |config|
   config.after(:all) do
     DatabaseCleaner.clean
   end
+
+  # Manually configure should matchers
+  config.include(Shoulda::Matchers::ActiveRecord, type: :model)
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
