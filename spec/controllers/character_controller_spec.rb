@@ -3,12 +3,13 @@
 require 'rails_helper'
 
 describe Api::CharactersController, type: :controller do
-  before(:all) do
-    @character = create(:character)
-  end
-
   # GET/ ...
   describe 'GET #show' do
+    # TODO: need to add before :each in contexts (create relationships)
+    before(:all) do
+      @character = create(:character)
+    end
+
     context 'without relationships' do
       it 'returns json in the correct format' do
       end
