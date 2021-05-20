@@ -8,9 +8,8 @@ describe Character, type: :model do
   end
 
   context 'validates character attributes' do
-
     # TODO: remove bad tests
-    
+
     it { expect(@character.id).to eq(1) }
     it { expect(@character.first_name).to eq('Kaen') }
     it { expect(@character.last_name).to eq('Yori') }
