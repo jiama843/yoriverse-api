@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_509_175_055) do
+ActiveRecord::Schema.define(version: 20_210_518_163_604) do
   create_table 'characters', force: :cascade do |t|
     t.string 'appearance'
     t.string 'traits'
@@ -25,5 +25,14 @@ ActiveRecord::Schema.define(version: 20_210_509_175_055) do
     t.decimal 'weight'
     t.datetime 'date_of_birth'
     t.string 'description'
+  end
+
+  create_table 'relationships', force: :cascade do |t|
+    t.integer 'character_from_id'
+    t.integer 'character_to_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['character_from_id'], name: 'index_relationships_on_character_from_id'
+    t.index ['character_to_id'], name: 'index_relationships_on_character_to_id'
   end
 end

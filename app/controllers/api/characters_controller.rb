@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
+# Documentation:
+# CharacterController corresponds to the respective API
 module Api
-  # Documentation:
-  # CharacterController corresponds to the respective API
   class CharactersController < ApiController
     # GET api/characters
     def index
@@ -14,13 +14,6 @@ module Api
     def create
       new_character = Character.create(character_params)
       render json: { character_id: new_character.id, status: 200 }
-
-      # .new isn't too useful in an api
-      # if new_character.save
-      #   render json: { status: 200 }
-      # else
-      #   render json: { status: 404 }
-      # end
     end
 
     def show
@@ -52,6 +45,10 @@ module Api
 
     def character
       Character.find_by_id(params[:id])
+    end
+
+    def character_with_relations
+      Character.find_by_id(params[:id]).includes(:character_from).to_a
     end
 
     def character_params
