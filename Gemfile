@@ -35,7 +35,6 @@ group :development, :test do
 
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 3.5'
-  # gem 'capybara' # Not too applicable for an api
   gem 'database_cleaner'
   gem 'shoulda-matchers', '~> 4.0'
 end

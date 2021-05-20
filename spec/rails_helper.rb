@@ -55,7 +55,7 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :transaction
   end
 
-  # might not need to clean database after "each"
+  # TODO: might not need to clean database after "each"
   config.before(:each) do
     DatabaseCleaner.start
   end
