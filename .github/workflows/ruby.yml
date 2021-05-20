@@ -36,5 +36,5 @@ jobs:
     - name: Run migrations
       run: bundle exec rails db:migrate RAILS_ENV=test # For master, this should be changed to production in real world use case
     - name: Run tests
-      run: bundle exec rake
+      run: bundle exec rspec
       
