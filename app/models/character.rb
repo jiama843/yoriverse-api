@@ -12,8 +12,8 @@ class Character < ApplicationRecord
 
   # scope :with_relationships, -> {  }
 
-  def to_formatted_json do
-    byebug
+  # TODO: Add location_of_birth and events involved
+  def to_formatted_json
     {
         id: id,
         name: {
@@ -21,11 +21,19 @@ class Character < ApplicationRecord
             last: last_name,
             full: `{first_name} {last_name}`
         },
-        
+        age: age,
+        height: height,
+        weight: weight,
+        appearance: appearance&.force_encoding("utf-8"),
+        description: description&.force_encoding("utf-8"),
+        relationships: character_tos.pluck(:id),
+        date_of_birth: date_of_birth,
+        created_at: created_at.to_formatted_s(:iso8601),
+        updated_at: updated_at.to_formatted_s(:iso8601)
     }
   end
 
   private
 
-  def 
+  # def 
 end

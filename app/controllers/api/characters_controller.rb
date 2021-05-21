@@ -7,17 +7,17 @@ module Api
     # GET api/characters
     def index
       # Health check
-      render json: { status: 200 }
+      render json: { status: "OK" }, status: 200
     end
 
     # POST api/characters
     def create
       new_character = Character.create(character_params)
-      render json: { character_id: new_character.id, status: 200 }
+      render json: { character_id: new_character.id }, status: 200
     end
 
     def show
-      render json: { character: character }
+      render json: character.to_formatted_json, status: 200
     end
 
     def update
@@ -27,9 +27,9 @@ module Api
     def destroy
       if !character.nil?
         character.destroy
-        render json: { status: 200 }
+        render json: { status: "Successfully deleted character" }, status: 200
       else
-        render json: { status: 404 }
+        render json: { status: "Failed to delete character" }, status: 200
       end
     end
 
@@ -47,9 +47,9 @@ module Api
       Character.find_by_id(params[:id])
     end
 
-    def character_with_relations
-      Character.find_by_id(params[:id]).includes(:character_from).to_a
-    end
+    # def character_with_relations
+    #   Character.find_by_id(params[:id]).includes(:character_from).to_a
+    # end
 
     def character_params
       params.require(:character).permit(:id, :first_name, :last_name, :traits, :appearance, :age, :description, :height,

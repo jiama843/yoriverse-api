@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :characters
+  # resources :characters
 
   root 'characters#index'
 

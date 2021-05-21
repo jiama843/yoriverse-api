@@ -2,7 +2,13 @@
 
 require 'rails_helper'
 
-describe Api::CharactersController, type: :controller do
+describe Api::CharactersController, type: :request do
+  
+  # Test that requests map to actions as expected
+  describe 'routing' do
+    #it { should route(:get, '/api/characters').to(action: :index) }
+    #it { should route(:get, '/api/characters/1').to(action: :show) }
+  end
 
   # GET #show
   describe 'GET #show' do
@@ -10,7 +16,7 @@ describe Api::CharactersController, type: :controller do
 
     # GET /api/characters
     it 'returns status :ok on health check' do
-        get :index
+        get "/api/characters"
 
         byebug
         expect(response).to have_http_status(:ok)
@@ -24,8 +30,7 @@ describe Api::CharactersController, type: :controller do
       # GET /api/characters/:id
       it 'returns json in the correct format' do
         headers = { "ACCEPT" => "application/json" }
-        request.headers.merge!(headers)
-        get :show, params: { id: @character.id }
+        get "/api/characters/#{@character.id}", headers: headers #, params: { id: @character.id }
 
         @expected = {
             uest: true
