@@ -43,10 +43,11 @@ describe Api::CharactersController, type: :request do
           "updated_at": @character.updated_at.to_formatted_s(:iso8601)
         }.to_json
 
-        byebug
+        response_body = JSON.parse(response.body)
+
         expect(response.content_type).to eq("application/json")
         expect(response).to have_http_status(:ok)
-        expect(response.body).to eq(@expected)
+        expect(response_body.to_json).to eq(@expected)
       end
 
       it 'return not found status if character does not exist' do
@@ -59,8 +60,18 @@ describe Api::CharactersController, type: :request do
         @relationship = create(:relationship, character_from_id: @character1.id, character_to_id: @character2.id)
       end
 
+      # GET /api/characters/:id
       it 'returns json for relationships' do
+        headers = { "ACCEPT" => "application/json" }
+        get "/api/characters/#{@character1.id}", headers: headers
 
+        @expected_relationships = [2]
+
+        response_json = JSON.parse(response.body)
+
+        expect(response.content_type).to eq("application/json")
+        expect(response).to have_http_status(:ok)
+        expect(response_json["relationships"]).to eq(@expected_relationships)
       end
     end
   end
