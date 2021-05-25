@@ -14,12 +14,13 @@ class Character < ApplicationRecord
 
   # TODO: Add location_of_birth and events involved
   def to_formatted_json
+    response_body = 
     {
         id: id,
         name: {
             first: first_name,
             last: last_name,
-            full: `{first_name} {last_name}`
+            full: "#{first_name} #{last_name}"
         },
         age: age,
         height: height,
@@ -31,6 +32,9 @@ class Character < ApplicationRecord
         created_at: created_at.to_formatted_s(:iso8601),
         updated_at: updated_at.to_formatted_s(:iso8601)
     }
+
+    #JSON.pretty_generate(response_body)
+    response_body.to_json
   end
 
   private

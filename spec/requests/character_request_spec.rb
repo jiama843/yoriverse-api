@@ -3,12 +3,6 @@
 require 'rails_helper'
 
 describe Api::CharactersController, type: :request do
-  
-  # Test that requests map to actions as expected
-  describe 'routing' do
-    #it { should route(:get, '/api/characters').to(action: :index) }
-    #it { should route(:get, '/api/characters/1').to(action: :show) }
-  end
 
   # GET #show
   describe 'GET #show' do
@@ -18,7 +12,6 @@ describe Api::CharactersController, type: :request do
     it 'returns status :ok on health check' do
         get "/api/characters"
 
-        byebug
         expect(response).to have_http_status(:ok)
     end
 
@@ -33,12 +26,27 @@ describe Api::CharactersController, type: :request do
         get "/api/characters/#{@character.id}", headers: headers #, params: { id: @character.id }
 
         @expected = {
-            uest: true
-        }
+          "id": 1,
+          "name": {
+            "first": "Kaen",
+            "last": "Yori",
+            "full": "Kaen Yori"
+          },
+          "age": nil,
+          "height": nil,
+          "weight": nil,
+          "appearance": nil,
+          "description": nil,
+          "relationships": [],
+          "date_of_birth": nil,
+          "created_at": @character.created_at.to_formatted_s(:iso8601),
+          "updated_at": @character.updated_at.to_formatted_s(:iso8601)
+        }.to_json
 
         byebug
         expect(response.content_type).to eq("application/json")
         expect(response).to have_http_status(:ok)
+        expect(response.body).to eq(@expected)
       end
 
       it 'return not found status if character does not exist' do
@@ -47,8 +55,7 @@ describe Api::CharactersController, type: :request do
 
     context 'with relationships' do
       before(:each) do
-        @character1 = create(:character)
-        @character2 = create(:character)
+        @character1, @character2 = create_list(:character, 2)
         @relationship = create(:relationship, character_from_id: @character1.id, character_to_id: @character2.id)
       end
 
