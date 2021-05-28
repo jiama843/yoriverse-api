@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # # frozen_string_literal: true
 
 # require 'rails_helper'
@@ -56,7 +57,7 @@
 #   # POST/
 #   describe 'POST #create' do
 #     # it ''
-#     #   body = 
+#     #   body =
 #   end
 
 #   # DELETE/

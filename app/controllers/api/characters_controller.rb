@@ -7,7 +7,7 @@ module Api
     # GET api/characters
     def index
       # Health check
-      render json: { status: "OK" }, status: 200
+      render json: { status: 'OK' }, status: 200
     end
 
     # POST api/characters
@@ -16,7 +16,10 @@ module Api
       render json: { character_id: new_character.id }, status: 200
     end
 
+    # GET api/characters/:id
     def show
+      render json: { status: 'Character does not exist' }, status: 404 and return if character.nil?
+
       render json: character.to_formatted_json, status: 200
     end
 
@@ -25,12 +28,10 @@ module Api
     end
 
     def destroy
-      if !character.nil?
-        character.destroy
-        render json: { status: "Successfully deleted character" }, status: 200
-      else
-        render json: { status: "Failed to delete character" }, status: 200
-      end
+      render json: { status: 'Failed to delete character' }, status: 404 and return if character.nil?
+
+      character.destroy
+      render json: { status: 'Successfully deleted character' }, status: 200
     end
 
     def appearance; end
