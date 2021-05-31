@@ -17,24 +17,37 @@ class Character < ApplicationRecord
     response_body =
       {
         id: id,
-        name: {
-          first: first_name,
-          last: last_name,
-          full: "#{first_name} #{last_name}"
-        },
+        name: name_data,
         age: age,
         height: height,
         weight: weight,
         appearance: appearance&.force_encoding('utf-8'),
         description: description&.force_encoding('utf-8'),
         relationships: character_tos.pluck(:id),
-        date_of_birth: date_of_birth,
-        created_at: created_at.to_formatted_s(:iso8601),
-        updated_at: updated_at.to_formatted_s(:iso8601)
+        date_of_birth: date_of_birth
       }
 
-    # JSON.pretty_generate(response_body)
+    # Merge timestamps
+    response_body.merge!(timestamps)
+
     response_body.to_json
+  end
+
+  private
+
+  def name_data
+    {
+      first: first_name,
+      last: last_name,
+      full: "#{first_name} #{last_name}"
+    }
+  end
+
+  def timestamps
+    {
+      created_at: created_at.to_formatted_s(:iso8601),
+      updated_at: updated_at.to_formatted_s(:iso8601)
+    }
   end
 
   # def
