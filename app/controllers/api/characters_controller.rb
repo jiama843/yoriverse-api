@@ -23,9 +23,8 @@ module Api
       render json: character.to_formatted_json, status: 200
     end
 
-    def update
-      # update(character_params)
-    end
+    # TODO: implement put/patch request flow
+    def update; end
 
     def destroy
       render json: { status: 'Failed to delete character' }, status: 404 and return if character.nil?
@@ -47,10 +46,6 @@ module Api
     def character
       Character.find_by_id(params[:id])
     end
-
-    # def character_with_relations
-    #   Character.find_by_id(params[:id]).includes(:character_from).to_a
-    # end
 
     def character_params
       params.require(:character).permit(:id, :first_name, :last_name, :traits, :appearance, :age, :description, :height,

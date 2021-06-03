@@ -66,7 +66,7 @@ describe Api::CharactersController, type: :request do
       end
 
       # GET /api/characters/:id
-      it 'returns json for relationships for basic relation' do
+      it 'returns json with relationships for basic associations' do
         headers = { 'ACCEPT' => 'application/json' }
         get "/api/characters/#{@character1.id}", headers: headers
 
@@ -80,7 +80,7 @@ describe Api::CharactersController, type: :request do
       end
 
       # GET /api/characters/:id
-      it 'returns json for complex relations' do
+      it 'returns json with relationships for complex associations' do
         headers = { 'ACCEPT' => 'application/json' }
         get "/api/characters/#{@character2.id}", headers: headers
 

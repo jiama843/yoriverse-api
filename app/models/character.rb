@@ -10,8 +10,6 @@ class Character < ApplicationRecord
                             dependent: :destroy
   has_many :character_froms, through: :relation_froms, source: :character_from
 
-  # scope :with_relationships, -> {  }
-
   # TODO: Add location_of_birth and events involved
   def to_formatted_json
     response_body =
@@ -49,6 +47,4 @@ class Character < ApplicationRecord
       updated_at: updated_at.to_formatted_s(:iso8601)
     }
   end
-
-  # def
 end
