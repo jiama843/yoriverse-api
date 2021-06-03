@@ -3,15 +3,13 @@
 Rails.application.routes.draw do
   namespace :api do
     resources :characters do
-      resources :relationships, only: [:create]
+      resources :relationships, only: %i[create destroy]
 
       get 'appearance'
       get 'traits'
       get 'relationships'
     end
   end
-
-  resources :characters
 
   root 'characters#index'
 

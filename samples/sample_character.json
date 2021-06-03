@@ -1,0 +1,17 @@
+{
+    "id": 3,
+    "name": {
+        "first": "Kaen",
+        "last": "Yori"
+    },
+    "age": 10,
+    "height": 140,
+    "weight": 102,
+    "D.O.B": null,
+    "L.O.B": null,
+    "deceased": false,
+    "traits": ["bold", "direct", "unfazed"],
+    "description": "The 2nd eldest Yori sibling",
+    "abilities": [],
+    "relationships": []
+}

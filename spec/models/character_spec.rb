@@ -22,4 +22,6 @@ describe Character, type: :model do
     it { should have_many(:character_tos) }
     it { should have_many(:character_froms) }
   end
+
+  # TODO: Add tests for validating that relationships are configured as expected
 end
